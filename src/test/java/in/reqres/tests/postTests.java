@@ -17,7 +17,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class postTests extends TestBase {
     @Test
-    @Tag("user")
+    @Tag("post")
+    @Tag("users")
     @Tag("positive")
     @DisplayName("Successful creation of a new user")
     void createUserSuccessTest() {
@@ -37,7 +38,8 @@ public class postTests extends TestBase {
     }
 
     @Test
-    @Tag("user")
+    @Tag("post")
+    @Tag("users")
     @Tag("positive")
     @DisplayName("Successful registration of a new user")
     void registerUserSuccessTest() {
@@ -57,7 +59,8 @@ public class postTests extends TestBase {
     }
 
     @Test
-    @Tag("user")
+    @Tag("post")
+    @Tag("users")
     @Tag("negative")
     @DisplayName("Unsuccessful registration of a new user with missing password")
     void registerUserMissingPasswordTest() {
@@ -76,7 +79,8 @@ public class postTests extends TestBase {
     }
 
     @Test
-    @Tag("user")
+    @Tag("post")
+    @Tag("users")
     @Tag("negative")
     @DisplayName("Unsuccessful registration of a new user")
     void registerUserFailedTest() {
@@ -95,7 +99,8 @@ public class postTests extends TestBase {
     }
 
     @Test
-    @Tag("user")
+    @Tag("post")
+    @Tag("users")
     @Tag("positive")
     @DisplayName("Successful login of existing user")
     void LoginSuccessTest() {
@@ -114,7 +119,8 @@ public class postTests extends TestBase {
     }
 
     @Test
-    @Tag("user")
+    @Tag("post")
+    @Tag("users")
     @Tag("negative")
     @DisplayName("Unsuccessful login of existing user with missing password")
     void loginUserMissingPasswordTest() {
@@ -133,7 +139,8 @@ public class postTests extends TestBase {
     }
 
     @Test
-    @Tag("user")
+    @Tag("post")
+    @Tag("users")
     @Tag("negative")
     @DisplayName("Unsuccessful login of unexisting user")
     void loginFailedTest() {

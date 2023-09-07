@@ -13,7 +13,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class deleteTests extends TestBase {
     @Test
-    @Tag("user")
+    @Tag("delete")
+    @Tag("users")
     @Tag("positive")
     @DisplayName("Successful user deletion")
     void deleteUserSuccessTest() {

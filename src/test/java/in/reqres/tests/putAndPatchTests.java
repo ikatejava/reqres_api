@@ -14,7 +14,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class putAndPatchTests extends TestBase {
     @Test
-    @Tag("user")
+    @Tag("put_patch")
+    @Tag("users")
     @Tag("positive")
     @DisplayName("Successful update user's information")
     void updateUserInfoWithPUTMethodSuccessTest() {
@@ -40,7 +41,8 @@ public class putAndPatchTests extends TestBase {
     }
 
     @Test
-    @Tag("user")
+    @Tag("put_patch")
+    @Tag("users")
     @Tag("positive")
     @DisplayName("Successful update user's information")
     void updateUserInfoWithPATCHMethodSuccessTest() {
