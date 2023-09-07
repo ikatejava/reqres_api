@@ -39,13 +39,13 @@ tasks.withType(Test) {
     }
 }
 
-task check_users_test(type: Test) {
+task users_test(type: Test) {
     useJUnitPlatform {
         includeTags("users")
     }
 }
 
-task check_resources_test(type: Test) {
+task resources_test(type: Test) {
     useJUnitPlatform {
         includeTags("resources")
     }
