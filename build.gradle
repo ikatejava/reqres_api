@@ -51,6 +51,30 @@ task resources_test(type: Test) {
     }
 }
 
+task get_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("get")
+    }
+}
+
+task post_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("post")
+    }
+}
+
+task put_and_patch_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("put_patch")
+    }
+}
+
+task delete_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("delete")
+    }
+}
+
 task positive_test(type: Test) {
     useJUnitPlatform {
         includeTags("positive")

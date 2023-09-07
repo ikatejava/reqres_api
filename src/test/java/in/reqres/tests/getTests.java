@@ -17,6 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class getTests extends TestBase {
 
     @Test
+    @Tag("get")
     @Tag("users")
     @Tag("positive")
     @DisplayName("Get list of all ReqRes users with information about them on one page")
@@ -31,6 +32,7 @@ public class getTests extends TestBase {
     }
 
     @Test
+    @Tag("get")
     @Tag("users")
     @Tag("positive")
     @DisplayName("Get list of half of ReqRes users with information about them on 2nd page")
@@ -45,6 +47,7 @@ public class getTests extends TestBase {
     }
 
     @Test
+    @Tag("get")
     @Tag("users")
     @Tag("positive")
     @DisplayName("Get delayed response of half of ReqRes users with information about them on any possible page")
@@ -60,6 +63,7 @@ public class getTests extends TestBase {
     }
 
     @Test
+    @Tag("get")
     @Tag("users")
     @Tag("positive")
     @DisplayName("Get empty list of ReqRes users on 3rd page")
@@ -74,6 +78,7 @@ public class getTests extends TestBase {
     }
 
     @Test
+    @Tag("get")
     @Tag("users")
     @Tag("positive")
     @DisplayName("Check information about one random ReqRes user")
@@ -169,6 +174,7 @@ public class getTests extends TestBase {
     }
 
     @Test
+    @Tag("get")
     @Tag("users")
     @Tag("negative")
     @DisplayName("Check information about one ReqRes unexisting user (failure)")
@@ -184,6 +190,7 @@ public class getTests extends TestBase {
     }
 
     @Test
+    @Tag("get")
     @Tag("recources")
     @Tag("positive")
     @DisplayName("Get list of all ReqRes resources with information about them on one page")
@@ -198,6 +205,7 @@ public class getTests extends TestBase {
     }
 
     @Test
+    @Tag("get")
     @Tag("recources")
     @Tag("positive")
     @DisplayName("Get list of half of ReqRes recources with information about them on 2nd page")
@@ -212,6 +220,7 @@ public class getTests extends TestBase {
     }
 
     @Test
+    @Tag("get")
     @Tag("resources")
     @Tag("positive")
     @DisplayName("Get empty list of ReqRes resources on 3rd page")
@@ -226,6 +235,7 @@ public class getTests extends TestBase {
     }
 
     @Test
+    @Tag("get")
     @Tag("resources")
     @Tag("positive")
     @DisplayName("Check information about one random ReqRes resource")
@@ -321,6 +331,7 @@ public class getTests extends TestBase {
     }
 
     @Test
+    @Tag("get")
     @Tag("resources")
     @Tag("negative")
     @DisplayName("Check information about one ReqRes unexisting resource (failure)")
