@@ -14,7 +14,7 @@ import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class getTests extends TestBase {
+public class GetTests extends TestBase {
 
     @Test
     @Tag("get")

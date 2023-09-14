@@ -42,5 +42,4 @@ public class RequestSpecs {
             .filter(withCustomTemplates())
             .baseUri("https://reqres.in/")
             .basePath("api/resource");
-
 }

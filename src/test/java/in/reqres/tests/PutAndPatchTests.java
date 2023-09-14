@@ -12,7 +12,7 @@ import static in.reqres.specs.ResponseSpecs.updateUserInfo200;
 import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class putAndPatchTests extends TestBase {
+public class PutAndPatchTests extends TestBase {
     @Test
     @Tag("put_patch")
     @Tag("users")

@@ -11,7 +11,7 @@ import static in.reqres.specs.ResponseSpecs.getNewUserInfo201;
 import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class deleteTests extends TestBase {
+public class DeleteTests extends TestBase {
     @Test
     @Tag("delete")
     @Tag("users")
