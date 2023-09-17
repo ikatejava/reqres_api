@@ -1,7 +1,6 @@
 package in.reqres.tests;
 
-import in.reqres.models.CreateNewUserResponseModel;
-import in.reqres.models.UpdateUserInfoResponseModel;
+import in.reqres.models.CreateAndUpdateUserResponseModel;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -19,23 +18,23 @@ public class PutAndPatchTests extends TestBase {
     @Tag("positive")
     @DisplayName("Successful update user's information")
     void updateUserInfoWithPUTMethodSuccessTest() {
-        CreateNewUserResponseModel createNewUserResponse = given(usersRequestSpecification)
+        CreateAndUpdateUserResponseModel createNewUserResponse = given(usersRequestSpecification)
                 .body(createNewUserRequestBody)
                 .when()
                 .post()
                 .then()
                 .spec(getNewUserInfo201)
-                .extract().as(CreateNewUserResponseModel.class);
+                .extract().as(CreateAndUpdateUserResponseModel.class);
         assertEquals(createNewUserRequestBody.getName(), createNewUserResponse.getName());
         assertEquals(createNewUserRequestBody.getJob(), createNewUserResponse.getJob());
 
-        UpdateUserInfoResponseModel updateUserInfoResponse = given(usersRequestSpecification)
+        CreateAndUpdateUserResponseModel updateUserInfoResponse = given(usersRequestSpecification)
                 .body(updateUserRequestModel)
                 .when()
                 .put(String.valueOf(createNewUserResponse.getId()))
                 .then()
                 .spec(updateUserInfo200)
-                .extract().as(UpdateUserInfoResponseModel.class);
+                .extract().as(CreateAndUpdateUserResponseModel.class);
         assertEquals(updateUserRequestModel.getName(), updateUserInfoResponse.getName());
         assertEquals(updateUserRequestModel.getJob(), updateUserInfoResponse.getJob());
     }
@@ -46,23 +45,23 @@ public class PutAndPatchTests extends TestBase {
     @Tag("positive")
     @DisplayName("Successful update user's information")
     void updateUserInfoWithPATCHMethodSuccessTest() {
-        CreateNewUserResponseModel createNewUserResponse = given(usersRequestSpecification)
+        CreateAndUpdateUserResponseModel createNewUserResponse = given(usersRequestSpecification)
                 .body(createNewUserRequestBody)
                 .when()
                 .post()
                 .then()
                 .spec(getNewUserInfo201)
-                .extract().as(CreateNewUserResponseModel.class);
+                .extract().as(CreateAndUpdateUserResponseModel.class);
         assertEquals(createNewUserRequestBody.getName(), createNewUserResponse.getName());
         assertEquals(createNewUserRequestBody.getJob(), createNewUserResponse.getJob());
 
-        UpdateUserInfoResponseModel updateUserInfoResponse = given(usersRequestSpecification)
+        CreateAndUpdateUserResponseModel updateUserInfoResponse = given(usersRequestSpecification)
                 .body(updateUserRequestModel)
                 .when()
                 .patch(String.valueOf(createNewUserResponse.getId()))
                 .then()
                 .spec(updateUserInfo200)
-                .extract().as(UpdateUserInfoResponseModel.class);
+                .extract().as(CreateAndUpdateUserResponseModel.class);
         assertEquals(updateUserRequestModel.getName(), updateUserInfoResponse.getName());
         assertEquals(updateUserRequestModel.getJob(), updateUserInfoResponse.getJob());
     }

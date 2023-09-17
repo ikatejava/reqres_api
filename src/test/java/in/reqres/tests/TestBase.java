@@ -1,10 +1,8 @@
 package in.reqres.tests;
 
 import com.github.javafaker.Faker;
-import in.reqres.models.CorrectRegistrationAndLoginRequestModel;
 import in.reqres.models.CreateAndUpdateUserRequestModel;
-import in.reqres.models.IncorrectRegistrationRequestModel;
-import in.reqres.models.MissingPasswordRegistrationAndLoginRequestModel;
+import in.reqres.models.RegistrationAndLoginRequestModel;
 
 import static in.reqres.tests.TestData.user4Email;
 
@@ -20,15 +18,15 @@ public class TestBase {
     CreateAndUpdateUserRequestModel updateUserRequestModel =
             new CreateAndUpdateUserRequestModel(newUserName, "QA Engineer");
 
-
     String newUsername = faker.name().username();
     String newEmail = faker.internet().emailAddress();
     String newPassword = faker.internet().password();
 
-    CorrectRegistrationAndLoginRequestModel rightRegAndAuthData =
-            new CorrectRegistrationAndLoginRequestModel(user4Email, newPassword);
-    MissingPasswordRegistrationAndLoginRequestModel missingPasswordRegAndAuthData =
-            new MissingPasswordRegistrationAndLoginRequestModel(user4Email);
-    IncorrectRegistrationRequestModel wrongRegAndAuthData =
-            new IncorrectRegistrationRequestModel(newUsername, newEmail, newPassword);
+    RegistrationAndLoginRequestModel rightRegAndAuthData =
+            new RegistrationAndLoginRequestModel(user4Email, newPassword);
+    RegistrationAndLoginRequestModel missingPasswordRegAndAuthData =
+            new RegistrationAndLoginRequestModel(user4Email);
+    RegistrationAndLoginRequestModel wrongRegAndAuthData =
+            new RegistrationAndLoginRequestModel(newUsername, newEmail, newPassword);
 }
+

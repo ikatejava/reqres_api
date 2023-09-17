@@ -1,9 +1,8 @@
 package in.reqres.tests;
 
-import in.reqres.models.CreateNewUserResponseModel;
-import in.reqres.models.SuccesfulLoginResponseModel;
-import in.reqres.models.SuccessfulRegistrationResponseModel;
-import in.reqres.models.UnsuccessfulRegistrationAndLoginResponseModel;
+import in.reqres.models.CreateAndUpdateUserResponseModel;
+import in.reqres.models.ErrorResponseModel;
+import in.reqres.models.RegistrationAndLoginResponseModel;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -22,15 +21,14 @@ public class PostTests extends TestBase {
     @Tag("positive")
     @DisplayName("Successful creation of a new user")
     void createUserSuccessTest() {
-        CreateNewUserResponseModel createNewUserResponse = step("Make request", () -> {
-            return given(usersRequestSpecification)
-                    .body(createNewUserRequestBody)
-                    .when()
-                    .post()
-                    .then()
-                    .spec(getNewUserInfo201)
-                    .extract().as(CreateNewUserResponseModel.class);
-        });
+        CreateAndUpdateUserResponseModel createNewUserResponse = step("Make request", () ->
+                given(usersRequestSpecification)
+                        .body(createNewUserRequestBody)
+                        .when()
+                        .post()
+                        .then()
+                        .spec(getNewUserInfo201)
+                        .extract().as(CreateAndUpdateUserResponseModel.class));
         step("Check response 201", () -> {
             assertEquals(createNewUserRequestBody.getName(), createNewUserResponse.getName());
             assertEquals(createNewUserRequestBody.getJob(), createNewUserResponse.getJob());
@@ -43,15 +41,14 @@ public class PostTests extends TestBase {
     @Tag("positive")
     @DisplayName("Successful registration of a new user")
     void registerUserSuccessTest() {
-        SuccessfulRegistrationResponseModel successfulRegistration = step("Make request", () -> {
-            return given(registerUserRequestSpecification)
-                    .body(rightRegAndAuthData)
-                    .when()
-                    .post()
-                    .then()
-                    .spec(getNewlyRegisteredUserInfo200)
-                    .extract().as(SuccessfulRegistrationResponseModel.class);
-        });
+        RegistrationAndLoginResponseModel successfulRegistration = step("Make request", () ->
+                given(registerUserRequestSpecification)
+                        .body(rightRegAndAuthData)
+                        .when()
+                        .post()
+                        .then()
+                        .spec(getNewlyRegisteredUserInfo200)
+                        .extract().as(RegistrationAndLoginResponseModel.class));
         step("Check response 200", () -> {
             assertEquals(newUserId, successfulRegistration.getId());
             assertEquals(userToken, successfulRegistration.getToken());
@@ -64,18 +61,16 @@ public class PostTests extends TestBase {
     @Tag("negative")
     @DisplayName("Unsuccessful registration of a new user with missing password")
     void registerUserMissingPasswordTest() {
-        UnsuccessfulRegistrationAndLoginResponseModel failedRegistration = step("Make request", () -> {
-            return given(registerUserRequestSpecification)
-                    .body(missingPasswordRegAndAuthData)
-                    .when()
-                    .post()
-                    .then()
-                    .spec(failedToRegisterOrAuthorizeUser400)
-                    .extract().as(UnsuccessfulRegistrationAndLoginResponseModel.class);
-        });
-        step("Check response 400", () -> {
-            assertEquals(errorMissingPassword, failedRegistration.getError());
-        });
+        ErrorResponseModel failedRegistration = step("Make request", () ->
+                given(registerUserRequestSpecification)
+                        .body(missingPasswordRegAndAuthData)
+                        .when()
+                        .post()
+                        .then()
+                        .spec(failedToRegisterOrAuthorizeUser400)
+                        .extract().as(ErrorResponseModel.class));
+        step("Check response 400", () ->
+                assertEquals(errorMissingPassword, failedRegistration.getError()));
     }
 
     @Test
@@ -84,18 +79,16 @@ public class PostTests extends TestBase {
     @Tag("negative")
     @DisplayName("Unsuccessful registration of a new user")
     void registerUserFailedTest() {
-        UnsuccessfulRegistrationAndLoginResponseModel failedRegistration = step("Make request", () -> {
-            return given(registerUserRequestSpecification)
-                    .body(wrongRegAndAuthData)
-                    .when()
-                    .post()
-                    .then()
-                    .spec(failedToRegisterOrAuthorizeUser400)
-                    .extract().as(UnsuccessfulRegistrationAndLoginResponseModel.class);
-        });
-        step("Check response 400", () -> {
-            assertEquals(errorRegistrationMessage, failedRegistration.getError());
-        });
+        ErrorResponseModel failedRegistration = step("Make request", () ->
+                given(registerUserRequestSpecification)
+                        .body(wrongRegAndAuthData)
+                        .when()
+                        .post()
+                        .then()
+                        .spec(failedToRegisterOrAuthorizeUser400)
+                        .extract().as(ErrorResponseModel.class));
+        step("Check response 400", () ->
+                assertEquals(errorRegistrationMessage, failedRegistration.getError()));
     }
 
     @Test
@@ -104,18 +97,16 @@ public class PostTests extends TestBase {
     @Tag("positive")
     @DisplayName("Successful login of existing user")
     void LoginSuccessTest() {
-        SuccesfulLoginResponseModel successfulLogin = step("Make request", () -> {
-            return given(loginRequestSpecification)
-                    .body(rightRegAndAuthData)
-                    .when()
-                    .post()
-                    .then()
-                    .spec(successfulLogin200)
-                    .extract().as(SuccesfulLoginResponseModel.class);
-        });
-        step("Check response 200", () -> {
-            assertEquals(userToken, successfulLogin.getToken());
-        });
+        RegistrationAndLoginResponseModel successfulLogin = step("Make request", () ->
+                given(loginRequestSpecification)
+                        .body(rightRegAndAuthData)
+                        .when()
+                        .post()
+                        .then()
+                        .spec(successfulLogin200)
+                        .extract().as(RegistrationAndLoginResponseModel.class));
+        step("Check response 200", () ->
+                assertEquals(userToken, successfulLogin.getToken()));
     }
 
     @Test
@@ -124,18 +115,16 @@ public class PostTests extends TestBase {
     @Tag("negative")
     @DisplayName("Unsuccessful login of existing user with missing password")
     void loginUserMissingPasswordTest() {
-        UnsuccessfulRegistrationAndLoginResponseModel failedLogin = step("Make request", () -> {
-            return given(loginRequestSpecification)
-                    .body(missingPasswordRegAndAuthData)
-                    .when()
-                    .post()
-                    .then()
-                    .spec(failedToRegisterOrAuthorizeUser400)
-                    .extract().as(UnsuccessfulRegistrationAndLoginResponseModel.class);
-        });
-        step("Check response 400", () -> {
-            assertEquals(errorMissingPassword, failedLogin.getError());
-        });
+        ErrorResponseModel failedLogin = step("Make request", () ->
+                given(loginRequestSpecification)
+                        .body(missingPasswordRegAndAuthData)
+                        .when()
+                        .post()
+                        .then()
+                        .spec(failedToRegisterOrAuthorizeUser400)
+                        .extract().as(ErrorResponseModel.class));
+        step("Check response 400", () ->
+                assertEquals(errorMissingPassword, failedLogin.getError()));
     }
 
     @Test
@@ -144,17 +133,15 @@ public class PostTests extends TestBase {
     @Tag("negative")
     @DisplayName("Unsuccessful login of unexisting user")
     void loginFailedTest() {
-        UnsuccessfulRegistrationAndLoginResponseModel failedLogin = step("Make request", () -> {
-            return given(loginRequestSpecification)
-                    .body(wrongRegAndAuthData)
-                    .when()
-                    .post()
-                    .then()
-                    .spec(failedToRegisterOrAuthorizeUser400)
-                    .extract().as(UnsuccessfulRegistrationAndLoginResponseModel.class);
-        });
-        step("Check response 400", () -> {
-            assertEquals(errorUserNotFound, failedLogin.getError());
-        });
+        ErrorResponseModel failedLogin = step("Make request", () ->
+                given(loginRequestSpecification)
+                        .body(wrongRegAndAuthData)
+                        .when()
+                        .post()
+                        .then()
+                        .spec(failedToRegisterOrAuthorizeUser400)
+                        .extract().as(ErrorResponseModel.class));
+        step("Check response 400", () ->
+                assertEquals(errorUserNotFound, failedLogin.getError()));
     }
 }

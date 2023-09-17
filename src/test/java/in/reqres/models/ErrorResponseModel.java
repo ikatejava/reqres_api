@@ -3,6 +3,6 @@ package in.reqres.models;
 import lombok.Data;
 
 @Data
-public class UnsuccessfulRegistrationAndLoginResponseModel {
+public class ErrorResponseModel {
     String error;
 }

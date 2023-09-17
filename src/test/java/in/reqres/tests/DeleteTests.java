@@ -1,6 +1,6 @@
 package in.reqres.tests;
 
-import in.reqres.models.CreateNewUserResponseModel;
+import in.reqres.models.CreateAndUpdateUserResponseModel;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -18,13 +18,13 @@ public class DeleteTests extends TestBase {
     @Tag("positive")
     @DisplayName("Successful user deletion")
     void deleteUserSuccessTest() {
-        CreateNewUserResponseModel createNewUserResponse = given(usersRequestSpecification)
+        CreateAndUpdateUserResponseModel createNewUserResponse = given(usersRequestSpecification)
                 .body(createNewUserRequestBody)
                 .when()
                 .post()
                 .then()
                 .spec(getNewUserInfo201)
-                .extract().as(CreateNewUserResponseModel.class);
+                .extract().as(CreateAndUpdateUserResponseModel.class);
         assertEquals(createNewUserRequestBody.getName(), createNewUserResponse.getName());
         assertEquals(createNewUserRequestBody.getJob(), createNewUserResponse.getJob());
 
