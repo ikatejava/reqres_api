@@ -52,8 +52,8 @@ public class GetTests extends TestBase {
     @Tag("positive")
     @DisplayName("Get delayed response of half of ReqRes users with information about them on any possible page")
     void getListOfSomeUsersDelayedSuccessTest() {
-
         int pageNumber = faker.random().nextInt(0, 2_000_000_000);
+
         given(usersRequestSpecification)
                 .queryParam("delay", pageNumber)
                 .when()
@@ -178,7 +178,6 @@ public class GetTests extends TestBase {
     @Tag("negative")
     @DisplayName("Check information about one ReqRes unexisting user (failure)")
     void getUserInfoFailureTest() {
-
         int userNumber = faker.random().nextInt(13, 100);
 
         given(usersRequestSpecification)
@@ -239,7 +238,6 @@ public class GetTests extends TestBase {
     @Tag("positive")
     @DisplayName("Check information about one random ReqRes resource")
     void getResourceInfoSuccessTest() {
-
         int resourceNumber = faker.random().nextInt(1, 12);
 
         ResourceInfoModel resourceInfo = step("Make request", () ->
@@ -334,7 +332,6 @@ public class GetTests extends TestBase {
     @Tag("negative")
     @DisplayName("Check information about one ReqRes unexisting resource (failure)")
     void getResourceInfoFailureTest() {
-
         int resourceNumber = faker.random().nextInt(13, 100);
 
         given(getResourcesRequestSpecification)

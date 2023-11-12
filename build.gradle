@@ -1,6 +1,6 @@
 plugins {
     id 'java-library'
-    id 'io.freefair.lombok' version '8.3'
+    id 'io.freefair.lombok' version '8.4'
     id 'io.qameta.allure' version '2.11.2'
 }
 
@@ -11,8 +11,8 @@ repositories {
     mavenCentral()
 }
 
-def jUnitJupiterVersion = "5.10.0",
-    restAssuredVersion = "5.3.1",
+def jUnitJupiterVersion = "5.10.1",
+    restAssuredVersion = "5.3.2",
     slf4jSimpleVersion = "2.0.9",
     javaFakerVersion = "1.0.2",
     allureRestAssuredVersion = '2.24.0'
@@ -85,4 +85,12 @@ task negative_test(type: Test) {
     useJUnitPlatform {
         includeTags("negative")
     }
+}
+
+compileJava {
+    options.encoding = 'UTF-8'
+}
+
+compileTestJava {
+    options.encoding = 'UTF-8'
 }
